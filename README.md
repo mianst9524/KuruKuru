@@ -20,7 +20,7 @@
         // くるくるの色・太さ
         using var pen = new Pen(Color.DodgerBlue, 4.5f);
         // くるくるの位置：フォームの中央
-        var center = new PointF(ClientSize.Width / 2f, ClientSize.Height / 2f);
+        var location = new PointF(ClientSize.Width / 2f, ClientSize.Height / 2f);
         // くるくるのサイズ：50x50
         var size = new SizeF(50, 50);
         // くるくるの周期

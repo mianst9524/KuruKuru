@@ -32,17 +32,17 @@ public partial class Form1 : Form
         // くるくるの色・太さ
         using var pen = new Pen(Color.DodgerBlue, 4.5f);
         // くるくるの位置：フォームの中央
-        var center = new PointF(ClientSize.Width / 2f, ClientSize.Height / 2f);
+        var location = new PointF(ClientSize.Width / 2f, ClientSize.Height / 2f);
         // くるくるのサイズ：50x50
         var size = new SizeF(50, 50);
         // くるくるの周期
         var periodMs = 1400; // 1400ミリ秒
         
         // くるくるの描画
-        DrawSpinner(e.Graphics, pen,  center, size, periodMs);
+        DrawSpinner(e.Graphics, pen,  location, size, periodMs);
     }
 
-    private void DrawSpinner(Graphics g, Pen pen, PointF center, SizeF size, int periodMs)
+    private void DrawSpinner(Graphics g, Pen pen, PointF location, SizeF size, int periodMs)
     {
         // 1回転の周期: 現在時刻を基準に 0～1に変換する
         double time = Environment.TickCount % periodMs / (double)(periodMs - 1);
@@ -57,7 +57,7 @@ public partial class Form1 : Form
 
         // 指定された位置を中心に回転する
         var transform = new Matrix();
-        transform.Translate(center.X, center.Y);
+        transform.Translate(location.X, location.Y);
         transform.Rotate((float)(360d * time + 90d)); // 初期位置は90度
         g.Transform = transform;
         
