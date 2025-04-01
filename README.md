@@ -30,7 +30,7 @@
         DrawSpinner(e.Graphics, pen,  center, size, periodMs);
     }
 
-    private void DrawSpinner(Graphics g, Pen pen, PointF center, SizeF size, int periodMs)
+    private void DrawSpinner(Graphics g, Pen pen, PointF location, SizeF size, int periodMs)
     {
         // 1回転の周期: 現在時刻を基準に 0～1に変換する
         double time = Environment.TickCount % periodMs / (double)(periodMs - 1);
@@ -45,7 +45,7 @@
 
         // 指定された位置を中心に回転する
         var transform = new Matrix();
-        transform.Translate(center.X, center.Y);
+        transform.Translate(location.X, location.Y);
         transform.Rotate((float)(360d * time + 90d)); // 初期位置は90度
         g.Transform = transform;
         
